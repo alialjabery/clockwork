@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TimeSheet</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [ 75, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
+</head>
+<style>
+
+.rangeslider{
+    width: 90%;
+}
+
+.myslider {
+    -webkit-appearance: none;
+    background: red  ;
+    width: 50%;
+    height: 20px;
+    opacity: 100;
+   }
+
+
+.myslider::-webkit-slider-thumb {
+    -webkit-appearance: button;
+    cursor: pointer;
+    background: blue  ;
+    width: 5%;
+    height: 20px;
+}
+
+
+.myslider:hover {
+    opacity: 20;
+}
+
+table#t01 {
+  background-color: #f1f1c1
+}
+th {
+text-align: right;
+}
+td {
+  padding: 15px;
+  text-align: right;
+}
+
+</style>
+<body>
+  <p>
+  <label for="amount">Price range:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+
+<div id="slider-range"></div>
+
+<div class="rangeslider">
+  <input type="range" min="1" max="100" value="10"
+                  class="myslider" id="sliderRange">
+  <p>Value: <span id="value"></span></p>
+</div>
+
+<script>
+var rangeslider = document.getElementById("sliderRange");
+var output = document.getElementById("value");
+output.innerHTML = rangeslider.value;
+
+rangeslider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+<!---
+<table id="t01">
+  <tr>
+    <th>A3</th>
+    <th>Sunday</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>Perry</td>
+    <td>07:00 - 17:00</td>
+    <td>07:00 - 17:00</td>
+    <td>07:00 - 17:00</td>
+    <td>07:00 - 17:00</td>
+    <td>07:00 - 17:00</td>
+    <td>07:00 - 17:00</td>
+    <td>07:00 - 17:00</td>
+    <th></th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>15:00 - 01:00</td>
+    <td>15:00 - 01:00</td>
+    <td>15:00 - 01:00</td>
+    <td>15:00 - 01:00</td>
+    <td>15:00 - 01:00</td>
+    <td>15:00 - 01:00</td>
+    <td>15:00 - 01:00</td>
+    <th></th>
+  </tr>
+  <tr>
+    <td>James</td>
+    <td>23:00 - 09:00</td>
+    <td>23:00 - 09:00</td>
+    <td>23:00 - 09:00</td>
+    <td>23:00 - 09:00</td>
+    <td>23:00 - 09:00</td>
+    <td>23:00 - 09:00</td>
+    <td>23:00 - 09:00</td>
+    <th></th>
+  </tr>
+</table>
+--->
+</body>
+</html>
